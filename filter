@@ -1,0 +1,11 @@
+cd /gpfs/Home/bxp5423/YDLAM/rerun_20260706/results
+
+for lib in Nalm6_KO_IK_K13_1_S1 Nalm6_KO_IK_K13_S4 Nalm6_KO_IK_K8_S3 Nalm6_wt_S2; do
+  perl /gpfs/Scratch/DovatLab/2025_9_LAM_HTGTS/YDLAM/transloc_pipeline/bin/TranslocFilter.pl \
+    $lib/${lib}.tlx \
+    $lib/${lib}_result.tlx \
+    --filters "f.unaligned=1 f.baitonly=1 f.uncut=G10 f.misprimed=L10 f.freqcut=1 f.largegap=G30 f.mapqual=1 f.breaksite=1 f.sequential=1 f.repeatseq=1 f.duplicate=1" \
+    2>&1 | tee ../logs/filter_${lib}.log
+done
+
+cd ..
