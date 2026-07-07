@@ -1,0 +1,9 @@
+cd /gpfs/Home/bxp5423/YDLAM/rerun_20260706
+
+for lib in Nalm6_KO_IK_K13_1_S1 Nalm6_KO_IK_K13_S4 Nalm6_KO_IK_K8_S3 Nalm6_wt_S2; do
+  TranslocDedup.pl \
+    results/$lib/${lib}.tlx \
+    results/$lib/${lib}_duplicate.tlx \
+    --cores 4 --offset_dist 0 --break_dist 0 \
+    2>&1 | tee logs/dedup_${lib}.log
+done
